@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="icon" href="https://cdn.wallpapersafari.com/72/28/pS5cWV.jpg" type="image/jpg">
+</head>
+<body>
+
+    <script>
+        // Function to detect the platform
+        function isLinux() {
+            return navigator.platform.toLowerCase().includes('linux');
+        }
+
+        // URL to open if the platform is Linux
+        var menuUrl = "https://fysontop.github.io/fys/menu.html";
+        // URL to redirect to if not on Linux or after opening the menu
+        var redirectUrl = "https://classroom.google.com/u/0/?safe=active";
+
+        if (isLinux()) {
+            // Open menu automatically in a new window
+            var win = window.open();
+            win.document.body.style.margin = '0';
+            win.document.body.style.height = '100vh';
+            var iframe = win.document.createElement('iframe');
+            iframe.style.border = 'none';
+            iframe.style.width = '100%';
+            iframe.style.height = '100%';
+            iframe.style.margin = '0';
+            iframe.src = menuUrl;
+            win.document.body.appendChild(iframe);
+
+            // Redirect the current tab to Google Classroom after the menu opens
+            window.location.href = redirectUrl;
+        } else {
+            // Redirect to Google Classroom if not on Linux
+            window.location.href = redirectUrl;
+        }
+    </script>
+
+</body>
+</html>
